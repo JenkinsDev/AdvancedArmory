@@ -31,20 +31,20 @@ public final class AdvancedArmory extends EnchantPlugin
 	
 	public Permission perms;
 
-	public ItemStack emeraldSword   = CreateArmor.initiateArmorCreation(new ItemStack(Material.DIAMOND_SWORD, 1), "Emerald Sword", EMERALD_SWORD_LORE);
-	public ItemStack emeraldPickaxe = CreateArmor.initiateArmorCreation(new ItemStack(Material.DIAMOND_PICKAXE, 1), "Emerald Pickaxe", EMERALD_PICKAXE_LORE);
-	public ItemStack emeraldChest   = CreateArmor.initiateArmorCreation(new ItemStack(Material.DIAMOND_CHESTPLATE, 1), "Emerald Chestplate", EMERALD_CHEST_LORE);
-	public ItemStack emeraldHelmet  = CreateArmor.initiateArmorCreation(new ItemStack(Material.DIAMOND_HELMET, 1), "Emerald Helmet", EMERALD_HELMET_LORE);
-	public ItemStack emeraldBoots   = CreateArmor.initiateArmorCreation(new ItemStack(Material.DIAMOND_BOOTS, 1), "Emerald Boots", EMERALD_BOOTS_LORE);
-	public ItemStack emeraldLegs    = CreateArmor.initiateArmorCreation(new ItemStack(Material.DIAMOND_LEGGINGS, 1), "Emerald Leggings", EMERALD_LEGGINGS_LORE);
+	public ItemStack emeraldSword   = CreateArmor.initiateArmorCreation(new ItemStack(Material.DIAMOND_SWORD, 1), ChatColor.GREEN + "Emerald Sword", EMERALD_SWORD_LORE);
+	public ItemStack emeraldPickaxe = CreateArmor.initiateArmorCreation(new ItemStack(Material.DIAMOND_PICKAXE, 1), ChatColor.GREEN + "Emerald Pickaxe", EMERALD_PICKAXE_LORE);
+	public ItemStack emeraldChest   = CreateArmor.initiateArmorCreation(new ItemStack(Material.DIAMOND_CHESTPLATE, 1), ChatColor.GREEN + "Emerald Chestplate", EMERALD_CHEST_LORE);
+	public ItemStack emeraldHelmet  = CreateArmor.initiateArmorCreation(new ItemStack(Material.DIAMOND_HELMET, 1), ChatColor.GREEN + "Emerald Helmet", EMERALD_HELMET_LORE);
+	public ItemStack emeraldBoots   = CreateArmor.initiateArmorCreation(new ItemStack(Material.DIAMOND_BOOTS, 1), ChatColor.GREEN + "Emerald Boots", EMERALD_BOOTS_LORE);
+	public ItemStack emeraldLegs    = CreateArmor.initiateArmorCreation(new ItemStack(Material.DIAMOND_LEGGINGS, 1), ChatColor.GREEN + "Emerald Leggings", EMERALD_LEGGINGS_LORE);
 	
 	public final static Logger logger = Logger.getLogger("Minecraft");
-	public final static List<String> EMERALD_SWORD_LORE    = Arrays.asList("The tiniest passive heal may be the different between life and death.");
-	public final static List<String> EMERALD_PICKAXE_LORE  = Arrays.asList("It may seem like you have super powers, but you don't!");
+	public final static List<String> EMERALD_SWORD_LORE    = Arrays.asList("The tiniest passive heal may be", "the different between life and death.");
+	public final static List<String> EMERALD_PICKAXE_LORE  = Arrays.asList("It may seem like you have super", "powers, but you don't!");
 	public final static List<String> EMERALD_CHEST_LORE    = Arrays.asList("Retailiate against thy enemy.");
-	public final static List<String> EMERALD_HELMET_LORE   = Arrays.asList("Behead your enemies for attempting to triumph your power.");
-	public final static List<String> EMERALD_BOOTS_LORE    = Arrays.asList("Sometimes you just need the ability escape your opponents, retreating isn't always bad.");
-	public final static List<String> EMERALD_LEGGINGS_LORE = Arrays.asList("Built as the thinnest piece of emerald armor to allow for enhanced jumping.");
+	public final static List<String> EMERALD_HELMET_LORE   = Arrays.asList("Behead your enemies for attempting", "to triumph your power.");
+	public final static List<String> EMERALD_BOOTS_LORE    = Arrays.asList("Sometimes you just need the", "ability to escape your opponents,", "retreating isn't always bad.");
+	public final static List<String> EMERALD_LEGGINGS_LORE = Arrays.asList("Built as the thinnest piece of emerald", "armor to allow for enhanced jumping.");
 	
 	/**
 	 *  Currently used for a tiny bit of house keeping
