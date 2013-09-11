@@ -42,6 +42,7 @@ public class GiveCustomItemCommand
 		emeraldSet.put("emeraldchest", advancedArmory.emeraldChest);
 		emeraldSet.put("emeraldsword", advancedArmory.emeraldSword);
 		emeraldSet.put("emeraldpickaxe", advancedArmory.emeraldPickaxe);
+		emeraldSet.put("emeraldlegs", advancedArmory.emeraldLegs);
 	}
 	
 	private static ItemStack getCustomItem(String item)

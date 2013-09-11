@@ -48,3 +48,6 @@ permissions:
   advancedarmory.emerald.sword:
     description: Allows the user/group to wear, create and use the emerald sword
     default: true
+  advancedarmory.emerald.legs:
+    description: Allows the user/group to wear, create and use the emerald leggings
+    default: true
