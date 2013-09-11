@@ -22,27 +22,27 @@ import com.rit.sucy.CustomEnchantment;
 
 public class SkyRocketingEnchantment extends CustomEnchantment
 {
-	
+
 	static Plugin advancedArmory;
 	static List<Player> noFlying = new ArrayList<Player>();
 	static FireworkEffectCodeB firework = new FireworkEffectCodeB();
-	
+
 	static final Material[] SKYROCKETING_ITEMS = new Material[] { Material.DIAMOND_BOOTS };
-	
+
 	/**
 	 *  Let's take the time set a few default values of our new enchantment.
 	 */
 	public SkyRocketingEnchantment()
 	{
 		super("SkyRocketing", SKYROCKETING_ITEMS, 0);
-		
+
 		setMaxLevel(1);
 		setBase(900);
-		
+
 		// Now that the default values are set let's go ahead and set our plugin for future runnable task calls
 		advancedArmory = Bukkit.getServer().getPluginManager().getPlugin("AdvancedArmory");
 	}
-	
+
 	/**
 	 * Handles checking if the user can fly or not as well as activating and deactivating flight
 	 * @param Player user
@@ -54,7 +54,7 @@ public class SkyRocketingEnchantment extends CustomEnchantment
 	{
 		if (user.getGameMode() == GameMode.CREATIVE)
 			return;
-		
+
 		// If the user is already flying then we want to turn off the effect for them.
 		if (user.isFlying()) {
 			removeUserFlight(user);
@@ -63,16 +63,16 @@ public class SkyRocketingEnchantment extends CustomEnchantment
 		} else {
 			if (noFlying.contains(user) || ! user.isSprinting() || user.isSneaking())
 				return;
-			
+
 			if (event.getAction() != Action.RIGHT_CLICK_AIR && event.getAction() != Action.RIGHT_CLICK_BLOCK)
 				return;
-			
+
 			allowUserFlight(user);
 			flyingFireworkEffect(user);
 			allowFlight(user.getServer(), user);
 		}
 	}
-	
+
 	/**
 	 * Send the user a message letting them know that they can fly when wearing the boots!
 	 * @param Player user
@@ -84,7 +84,7 @@ public class SkyRocketingEnchantment extends CustomEnchantment
 		sendUserMessage(user, "The emerald boots allow you to fly for up to 10 seconds!  Run and right click to give it a try!");
 		sendUserMessage(user, "In order to fly you must sprint and jump.");
 	}
-	
+
 	/**
 	 * Fixes a little bug that allows players to continue to fly indefinitely if the user unequips the boots while flying
 	 * @param Player user
@@ -94,7 +94,7 @@ public class SkyRocketingEnchantment extends CustomEnchantment
 	{		
 		removeUserCooldown(user);
 	}
-	
+
 	/**
 	 * Useful quick snippet for sending a message to a user.
 	 * TODO: Add to a utilities package
@@ -105,7 +105,7 @@ public class SkyRocketingEnchantment extends CustomEnchantment
 	{
 		user.sendMessage(ChatColor.AQUA + message);
 	}
-	
+
 	/**
 	 * Allow the user to take flight
 	 * @param Player user
@@ -114,11 +114,11 @@ public class SkyRocketingEnchantment extends CustomEnchantment
 	{
 		if (! user.getAllowFlight())
 			user.setAllowFlight(true);
-		
+
 		if (! user.isFlying())
 			user.setFlying(true);
 	}
-	
+
 	/**
 	 * Remove the user's ability to fly
 	 * @param Player user
@@ -127,11 +127,11 @@ public class SkyRocketingEnchantment extends CustomEnchantment
 	{
 		if (user.isFlying())
 			user.setFlying(false);
-		
+
 		if (user.getAllowFlight())
 			user.setAllowFlight(false);
 	}
-	
+
 	/**
 	 * Add the user to the no fly cooldown list.
 	 * @param Player user
@@ -141,7 +141,7 @@ public class SkyRocketingEnchantment extends CustomEnchantment
 		if (! noFlying.contains(user))
 			noFlying.add(user);
 	}
-	
+
 	/**
 	 * Remove the user from the no fly cooldown list.
 	 * @param Player user
@@ -151,7 +151,7 @@ public class SkyRocketingEnchantment extends CustomEnchantment
 		if (noFlying.contains(user))
 			noFlying.remove(user);
 	}
-	
+
 	/**
 	 * Runs the firework effect when the user starts a new flying session
 	 * @param Player user
@@ -159,14 +159,14 @@ public class SkyRocketingEnchantment extends CustomEnchantment
 	public void flyingFireworkEffect(Player user)
 	{
 		FireworkEffect fireworkfx = FireworkEffect.builder().with(Type.BALL).withColor(Color.RED, Color.AQUA).withFade(Color.GREEN).build();
-		
+
 		try {
 			firework.playFirework(user.getWorld(), user.getLocation(), fireworkfx);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Allow the user to fly for only 10 seconds. Once finished set them on a 30 second cooldown.
 	 * @param Server server
@@ -185,10 +185,10 @@ public class SkyRocketingEnchantment extends CustomEnchantment
 				addUserCooldown(user);
 				setUsersCooldown(server, user);
 			}
-			
+
 		}, 200);
 	}
-	
+
 	/**
 	 * Handle the timing for the cooldown list.  After 30 seconds we remove the user from the cooldown list.
 	 * @param server
@@ -198,15 +198,15 @@ public class SkyRocketingEnchantment extends CustomEnchantment
 	{
 		server.getScheduler().runTaskLater(advancedArmory, new Runnable()
 		{
-			
+
 			@Override
 			public void run()
 			{
 				sendUserMessage(user, "Your boots are now fueled up again!");
 				removeUserCooldown(user);
 			}
-			
+
 		}, 600);
 	}
-	
+
 }

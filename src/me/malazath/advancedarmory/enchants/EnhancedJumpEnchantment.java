@@ -11,18 +11,18 @@ public class EnhancedJumpEnchantment extends CustomEnchantment
 {
 	static final PotionEffect enhancedJumpPotionEffect = new PotionEffect(PotionEffectType.JUMP, Integer.MAX_VALUE, 1);
 	static final Material[] ENHANCED_JUMP_ITEMS = new Material[] { Material.DIAMOND_LEGGINGS };
-	
+
 	/**
 	 *  Let's take the time set a few default values of our new enchantment.
 	 */
 	public EnhancedJumpEnchantment()
 	{
 		super("Enhanced Jump", ENHANCED_JUMP_ITEMS, 0);
-		
+
 		setMaxLevel(1);
 		setBase(900);
 	}
-	
+
 	/**
 	 * Add the enhanced jump effect via a simple addPotionEffect call.
 	 * 
@@ -34,7 +34,7 @@ public class EnhancedJumpEnchantment extends CustomEnchantment
 	{
 		user.addPotionEffect(enhancedJumpPotionEffect, true);
 	}
-	
+
 	/**
 	 * Remove the enhanced jump effect so players don't have it after they
 	 * unequip or die with the boots.
