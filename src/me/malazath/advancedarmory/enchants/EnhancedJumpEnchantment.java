@@ -9,7 +9,7 @@ import com.rit.sucy.CustomEnchantment;
 
 public class EnhancedJumpEnchantment extends CustomEnchantment
 {
-	static final PotionEffect enhancedJumpPotionEffect = new PotionEffect(PotionEffectType.JUMP, Integer.MAX_VALUE, 2);
+	static final PotionEffect enhancedJumpPotionEffect = new PotionEffect(PotionEffectType.JUMP, Integer.MAX_VALUE, 1);
 	static final Material[] ENHANCED_JUMP_ITEMS = new Material[] { Material.DIAMOND_LEGGINGS };
 	
 	/**
