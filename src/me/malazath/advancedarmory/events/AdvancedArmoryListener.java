@@ -52,16 +52,17 @@ public class AdvancedArmoryListener implements Listener
 		ItemStack itemStack    = event.getCurrentItem();
 		String itemDisplayName = itemStack.getItemMeta().getDisplayName();
 
-		if (! isCurrentItemCustom(itemStack))
+		if (! isCurrentItemCustom(itemStack) || ! (event.getViewers().get(0) instanceof Player))
 			return;
 		
 		String permissionString = getPermissionString(itemDisplayName);
 		Player player = (Player) event.getViewers().get(0);
 		
-		if (! userHasEmeraldPermissions(player, permissionString)) {
-			advancedArmory.doesNotHavePermission(player);
-			event.setCancelled(true);
-		}
+		if (userHasEmeraldPermissions(player, permissionString))
+			return;
+		
+		advancedArmory.doesNotHavePermission(player);
+		event.setCancelled(true);
 	}
 	
 	private boolean isCurrentItemCustom(ItemStack eventItemStack)
@@ -105,7 +106,7 @@ public class AdvancedArmoryListener implements Listener
 	
 	private boolean userHasEmeraldPermissions(Player player, String permissionString)
 	{
-		if (! advancedArmory.doesPlayerHavePermission((Player) player, permissionString) && ! advancedArmory.doesPlayerHavePermission(player, "advancedarmory.emerald.*") && ! advancedArmory.doesPlayerHavePermission(player, "advancedarmory.*"))
+		if (! advancedArmory.doesPlayerHavePermission(player, permissionString) && ! advancedArmory.doesPlayerHavePermission(player, "advancedarmory.emerald.*") && ! advancedArmory.doesPlayerHavePermission(player, "advancedarmory.*"))
 			return false;
 		
 		return true;
