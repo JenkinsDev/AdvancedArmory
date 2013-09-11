@@ -2,6 +2,7 @@ package me.malazath.advancedarmory;
 
 import me.malazath.advancedarmory.armorsets.CreateArmor;
 import me.malazath.advancedarmory.commands.AdvancedArmoryCommandExecutor;
+import me.malazath.advancedarmory.enchants.EnhancedJumpEnchantment;
 import me.malazath.advancedarmory.enchants.InvertireEnchantment;
 import me.malazath.advancedarmory.enchants.LifeStealEnchantment;
 import me.malazath.advancedarmory.enchants.MultiBreakEnchantment;
@@ -35,13 +36,15 @@ public final class AdvancedArmory extends EnchantPlugin
 	public ItemStack emeraldChest   = CreateArmor.initiateArmorCreation(new ItemStack(Material.DIAMOND_CHESTPLATE, 1), "Emerald Chestplate", EMERALD_CHEST_LORE);
 	public ItemStack emeraldHelmet  = CreateArmor.initiateArmorCreation(new ItemStack(Material.DIAMOND_HELMET, 1), "Emerald Helmet", EMERALD_HELMET_LORE);
 	public ItemStack emeraldBoots   = CreateArmor.initiateArmorCreation(new ItemStack(Material.DIAMOND_BOOTS, 1), "Emerald Boots", EMERALD_BOOTS_LORE);
+	public ItemStack emeraldLegs    = CreateArmor.initiateArmorCreation(new ItemStack(Material.DIAMOND_LEGGINGS, 1), "Emerald Leggings", EMERALD_LEGGINGS_LORE);
 	
 	public final static Logger logger = Logger.getLogger("Minecraft");
-	public final static List<String> EMERALD_SWORD_LORE   = Arrays.asList("Built from the strongest natural ore available.");
-	public final static List<String> EMERALD_PICKAXE_LORE = Arrays.asList("Pickaxe that is awezomes!");
-	public final static List<String> EMERALD_CHEST_LORE   = Arrays.asList("Amazing chestpiece withou awesome powerz!");
-	public final static List<String> EMERALD_HELMET_LORE  = Arrays.asList("Look at my helmet! :D");
-	public final static List<String> EMERALD_BOOTS_LORE   = Arrays.asList("Skyrocketing Boots!");
+	public final static List<String> EMERALD_SWORD_LORE    = Arrays.asList("The tiniest passive heal may be the different between life and death.");
+	public final static List<String> EMERALD_PICKAXE_LORE  = Arrays.asList("It may seem like you have super powers, but you don't!");
+	public final static List<String> EMERALD_CHEST_LORE    = Arrays.asList("Retailiate against thy enemy.");
+	public final static List<String> EMERALD_HELMET_LORE   = Arrays.asList("Behead your enemies for attempting to triumph your power.");
+	public final static List<String> EMERALD_BOOTS_LORE    = Arrays.asList("Sometimes you just need the ability escape your opponents, retreating isn't always bad.");
+	public final static List<String> EMERALD_LEGGINGS_LORE = Arrays.asList("Built as the thinnest piece of emerald armor to allow for enhanced jumping.");
 	
 	/**
 	 *  Currently used for a tiny bit of house keeping
@@ -115,6 +118,16 @@ public final class AdvancedArmory extends EnchantPlugin
 		emeraldBootsRecipe.setIngredient('A',  Material.EMERALD);
 		
 		getServer().addRecipe(emeraldBootsRecipe);
+		
+		
+		// Emerald Leggings
+		EnchantmentAPI.getEnchantment("Enhanced Jump").addToItem(emeraldLegs, 1);
+		
+		ShapedRecipe emeraldLegsRecipe = new ShapedRecipe(emeraldLegs);
+		emeraldLegsRecipe.shape("AAA", "A A", "A A");
+		emeraldLegsRecipe.setIngredient('A', Material.EMERALD);
+		
+		getServer().addRecipe(emeraldLegsRecipe);
 	}
     
     public void doesNotHavePermission(Player player)
@@ -148,6 +161,7 @@ public final class AdvancedArmory extends EnchantPlugin
 		EnchantmentAPI.registerCustomEnchantment(new InvertireEnchantment());
 		EnchantmentAPI.registerCustomEnchantment(new SkullStealEnchantment());
 		EnchantmentAPI.registerCustomEnchantment(new SkyRocketingEnchantment());
+		EnchantmentAPI.registerCustomEnchantment(new EnhancedJumpEnchantment());
 	}
 	
     private boolean setupPermissions() {
