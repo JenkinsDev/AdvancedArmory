@@ -1,0 +1,50 @@
+name: AdvancedArmory
+main: me.malazath.advancedarmory.AdvancedArmory
+version: 1.0
+description: >
+    The AdvancedArmory plugin provides new in-game items to help improve the user experience from a general perspective.
+depend: [EnchantmentAPI, Vault]
+
+commands:
+  advancedarmory:
+    description: Give the user the specified custom item
+    aliases: aa
+    
+permissions:
+  advancedarmory.*:
+    description: Allows access to all commands and the ability to use all items/itemsets
+    default: op
+    children:
+      advancedarmory.give: true
+      advancedarmory.emerald.pickaxe: true
+      advancedarmory.emerald.helmet: true
+      advancedarmory.emerald.chest: true
+      advancedarmory.emerald.boots: true
+      advancedarmory.emerald.sword: true
+  advancedarmory.give:
+    description: Allows access to the /aa give <item> [player] command.
+    default: false
+  advancedarmory.emerald.*:
+    description: Allows the user/group to wear, create and use all of the emerald item sets
+    default: true
+    children:
+      advancedarmory.emerald.pickaxe: true
+      advancedarmory.emerald.helmet: true
+      advancedarmory.emerald.chest: true
+      advancedarmory.emerald.boots: true
+      advancedarmory.emerald.sword: true
+  advancedarmory.emerald.pickaxe:
+    description: Allows the user/group to wear, create and use the emerald pickaxe
+    default: true
+  advancedarmory.emerald.helmet:
+    description: Allows the user/group to wear, create and use the emerald helmet
+    default: true
+  advancedarmory.emerald.chest:
+    description: Allows the user/group to wear, create and use the emerald chest
+    default: true
+  advancedarmory.emerald.boots:
+    description: Allows the user/group to wear, create and use the emerald boots
+    default: true
+  advancedarmory.emerald.sword:
+    description: Allows the user/group to wear, create and use the emerald sword
+    default: true
